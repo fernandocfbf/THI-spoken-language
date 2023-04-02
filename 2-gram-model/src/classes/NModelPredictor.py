@@ -10,7 +10,7 @@ class NModelPredictor():
     def fit(self, text):
         tokenizer = Tokenizer(text=text)
         all_n_grams = tokenizer.get_ngrams(n=self.n)
-        bar = tqdm(total=len(list_of_previous_words))
+        bar = tqdm(total=len(all_n_grams))
         for n_gram in all_n_grams:
             previous_words = tuple(n_gram.get_context())
             current_word = n_gram.get_current_word()
