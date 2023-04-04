@@ -2,7 +2,7 @@
 import string
 
 #constants
-from src.constants.preprocess import USELESS_WORDS
+from src.constants.preprocess import USELESS_WORDS, NORMALIZATION_RULES
 
 class PreProcess():
     
@@ -16,3 +16,10 @@ class PreProcess():
             text.replace(useless_word, '')
         text = text.translate(str.maketrans('', '', string.digits))
         return text
+
+    def lemmatize_word(word):
+        for suffix, replacement in NORMALIZATION_RULES.items():
+            if word.endswith(suffix):
+                word = word[:-len(suffix)] + replacement
+                break
+        return word
