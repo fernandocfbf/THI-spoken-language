@@ -34,6 +34,8 @@ class NModelPredictor():
         previous_words = tuple(previous_words)
         if previous_words in self.context:
             return self.get_best_prediciton_based_on_previous_words(previous_words)
+        elif self.backoff_model != None:
+            return self.backoff_model.get_best_prediciton_based_on_previous_words(previous_words[1])
         return None
     
     def predict(self, list_of_previous_words):
@@ -44,6 +46,9 @@ class NModelPredictor():
             predictions.append(prediction)
             bar.update(1)
         return predictions
+    
+    def set_back_office_model(self, model):
+        self.backoff_model = model
             
 
 

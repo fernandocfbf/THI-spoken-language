@@ -1,4 +1,4 @@
-USELESS_WORDS = ["<unk>"]
+USELESS_WORDS = ["unk"]
 NORMALIZATION_RULES = {
     's': '',
     'es': '',
