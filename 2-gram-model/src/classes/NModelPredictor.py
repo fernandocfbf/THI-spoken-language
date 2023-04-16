@@ -26,9 +26,13 @@ class NModelPredictor():
             bar.update(1)
     
     def get_best_prediciton_based_on_previous_words(self, previous_words):
-        frequency_dictionary = self.context[previous_words]
-        best_prediciton = max(frequency_dictionary, key=frequency_dictionary.get)
-        return best_prediciton
+        try:
+            frequency_dictionary = self.context[previous_words]
+            best_prediciton = max(frequency_dictionary, key=frequency_dictionary.get)
+            return best_prediciton
+        except:
+            #no word found on the dictionary
+            return None
             
     def predict_single_word(self, previous_words):
         previous_words = tuple(previous_words)
