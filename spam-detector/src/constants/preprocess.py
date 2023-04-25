@@ -1,3 +1,4 @@
+USELESS_WORDS = ["unk"]
 NORMALIZATION_RULES = {
     's': '',
     'es': '',
