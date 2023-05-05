@@ -5,6 +5,9 @@ import string
 from src.constants.preprocess import NORMALIZATION_RULES, STOP_WORDS
 
 class PreProcess():
+
+    def lower_case(self, text):
+        return text.lower()
     
     def remove_punctuation(self, text):
         text_transformed = text.translate(str.maketrans('', '', string.punctuation))
@@ -29,4 +32,11 @@ class PreProcess():
                 word = word[:-len(suffix)] + replacement
                 break
         return word
+    
+    def apply_all(self, text):
+        text = self.lower_case(text)
+        text = self.remove_punctuation(text)
+        text = self.remove_stop_words(text)
+        text = self.lemmatize_word(text)
+        return text
     
